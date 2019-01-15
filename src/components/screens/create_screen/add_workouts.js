@@ -5,35 +5,43 @@ import { LinearGradient } from 'expo';
 import { TextInput } from 'react-native-gesture-handler';
 import firestore from '../database'
 import { MaterialCommunityIcons, Feather, AntDesign } from '@expo/vector-icons'
-
-export default class SaveScreen extends Component {
+export default class AddWorkouts extends Component {
     static navigationOptions = {
         header: null,
-        drawerLabel: 'Saved',
-        drawerIcon: ({ tintColor }) => (
-            <Feather
-                name="save" color='#FFFF' />
-        ),
-
+       
     };
 
+    
 
 
+    componentDidMount = () => {
+        this.ref
+            .doc("List_Workouts")
+            .collection("Arms")
+            .get()
+            .then(snapshot => {
+                snapshot.forEach(doc => {
+                    //console.log(doc.data());
+                    this.setState({
+                        list_workouts: [...this.state.list_workouts, doc.data()]
+                    })
+                });
+            });
+    }
 
+    workoutChecked = (item) => {
+    }
 
     render() {
         return (
             <LinearGradient style={styles.container} colors={['#304352', '#09203f']}>
-                <View style={styles.top}>
-
-                    {/*BACK BUTTON FOR DRAWER NAV*/}
-                    <AntDesign name="left" size={27} color='#A3B7C3' onPress={() => this.props.navigation.goBack()} opacity={0.6} />
-                    <Text style={{ color: '#A3B7C3', fontSize: 30, fontWeight: 'bold', textAlign: 'center' }}> Saved Workouts </Text>
-                    {/*MENU BUTTON FOR DRAWER NAV*/}
+                <View style={styles.top}> 
+                    <AntDesign name="left" size={27} color='#A3B7C3' onPress={() => this.props.navigation.goBack()} opacity={0.6}/>
+                    <Text style={{ color: '#A3B7C3', fontSize: 30, fontWeight: 'bold', textAlign: 'center' }}> Create Workout </Text>
                     <AntDesign name="menufold" size={27} color='#A3B7C3' onPress={() => this.props.navigation.openDrawer()} opacity={0.6} />
                 </View>
-
-
+                
+                
             </LinearGradient>
         );
     }
@@ -54,14 +62,14 @@ const styles = StyleSheet.create({
         opacity: .6
     },
     top: {
-        flex: .7,
+        flex: 0,
+        margin: 30,
+        flexDirection: 'row',
         justifyContent: 'space-around',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         shadowOpacity: 1,
         shadowOffset: { width: 3, height: 4 },
         opacity: .6,
-        flexDirection: 'row',
-        marginTop: 50
     },
     bottom: {
         flex: 5,
@@ -118,10 +126,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-end',
         //adjustsFontSizeToFit: true,
-    },
-    icon: {
-        width: 24,
-        height: 24,
     },
     icon: {
         width: 24,

@@ -1,17 +1,16 @@
-# Fitnessapp
-CS 470 Capstone Project
-
-
-Packages to run this app:
-
-  	 yarn add react-native-size-matters
+LIBRARIES REQUIRED
+------------------
+  react-native-swiper
+  npm i react-native-swiper
+  https://github.com/leecade/react-native-swiper
   
-  	 yarn add react-navigation
+  react-native-svg (Prereququisite for svg-charts)
+  npm i react-native-svg
+  https://github.com/react-native-community/react-native-svg
   
+  react-native-svg-charts
+  npm i react-native-svg-charts
+  https://www.npmjs.com/package/react-native-svg-charts
   
-If you have errors after installing packages, make sure to run:
-
-  	yarn install
-  
-to update dependencies
-
+ If you have hast module errors after installing libraries make sure to run rm -rf node_modules/
+ then npm install
