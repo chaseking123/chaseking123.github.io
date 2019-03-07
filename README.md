@@ -1,3 +1,7 @@
+Allows users to find, choose, and track pre-made workouts. Created in Visual Studio Code using JSX (JavaScript, HTML & CSS) in React Native and Expo SDK to allow for iOS and Android applications. An emphasis was placed on ease of use and HCI, UI/UX experience with prototyping in Adobe XD and extensive user testing. Backend was done in Google Firestore for its quick implementation of mobile backend as a service. 
+
+
+
 LIBRARIES REQUIRED
 ------------------
   react-native-swiper
